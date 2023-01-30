@@ -16,9 +16,11 @@ public class getCPUTemp
         {
             foreach (var f in Directory.GetFiles(d))
             {
+                Console.WriteLine($"Considering {f}");
                 if (f.EndsWith("_input"))
                 {
                     files.Add(f);
+                    Console.WriteLine($"Reading {f}");
                 }
             }
         }
