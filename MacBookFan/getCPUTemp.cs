@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace MacBookFan;
 
 public class getCPUTemp
@@ -16,18 +18,18 @@ public class getCPUTemp
         {
             foreach (var f in Directory.GetFiles(d))
             {
-                Console.WriteLine($"Considering {f}");
+                Debug.WriteLine($"Considering {f}");
                 if (f.EndsWith("_input"))
                 {
                     files.Add(f);
-                    Console.WriteLine($"Reading {f}");
+                    Debug.WriteLine($"Reading {f}");
                 }
             }
         }
         
         foreach (var file in files)
         {
-            Console.WriteLine(file);
+            Debug.WriteLine(file);
             int temp = Int32.Parse(File.ReadAllText(file)) / 1000;
             Temperatures.Add(temp);
         }
