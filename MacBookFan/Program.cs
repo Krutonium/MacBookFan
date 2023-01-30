@@ -2,6 +2,9 @@
 
 namespace MacBookFan // Note: actual namespace depends on the project name.
 {
+    
+    // Useful References:
+    // https://github.com/davidfoxcroft/mbpfan/blob/master/src/mbpfan.c
     internal class Program
     {
         static void Main(string[] args)
