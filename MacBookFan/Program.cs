@@ -21,7 +21,8 @@ namespace MacBookFan // Note: actual namespace depends on the project name.
             getCPUTemp cpuTemp = new getCPUTemp();
             prochot.Disable_ProcHot();
             //Now we loop
-            while (true)
+            bool loop = true;
+            while (loop)
             {
                 //Check Temperature
                 //Adjust fan speed
@@ -34,6 +35,8 @@ namespace MacBookFan // Note: actual namespace depends on the project name.
                     Console.WriteLine(i);
                     Console.WriteLine("Looped");
                 }
+
+                loop = false;
             }
         }
     }
