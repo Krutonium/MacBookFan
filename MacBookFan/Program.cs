@@ -30,6 +30,7 @@ namespace MacBookFan // Note: actual namespace depends on the project name.
                 var temp = cpuTemp.getCoreTemps();
                 foreach (var i in temp)
                 {
+                    Console.WriteLine("Getting Temps");
                     Console.WriteLine(i);
                     Console.WriteLine("Looped");
                 }
