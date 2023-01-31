@@ -10,6 +10,7 @@ public class fanSpeed
         List<decimal> speedPercents = new List<decimal>();
         foreach (var fan in Fans)
         {
+            Console.WriteLine($"Fan is {fan.min_speed} {fan.current_speed} {fan.max_speed}");
             int range = fan.max_speed - fan.min_speed;
             decimal percent = Math.Round((decimal) (range / fan.current_speed * 100));
             speedPercents.Add(percent);
