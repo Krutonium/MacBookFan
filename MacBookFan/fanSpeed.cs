@@ -26,9 +26,9 @@ public class fanSpeed
         List<Fan> fans = new List<Fan>();
         foreach (var file in Files)
         {
+            Console.WriteLine($"Considering {file}");
             if (file.StartsWith("fan"))
             {
-                Console.WriteLine($"Considering {file}");
                 string fanNumber = file[3].ToString();
                 if (!fanBlacklist.Contains(fanNumber))
                 {
