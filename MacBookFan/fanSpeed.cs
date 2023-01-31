@@ -4,14 +4,14 @@ namespace MacBookFan;
 
 public class fanSpeed
 {
-    public List<int> getFanSpeed()
+    public List<decimal> getFanSpeed()
     {
         var Fans = getFans();
-        List<int> speedPercents = new List<int>();
+        List<decimal> speedPercents = new List<decimal>();
         foreach (var fan in Fans)
         {
             int range = fan.max_speed - fan.min_speed;
-            int percent = (int)Math.Round((decimal) (range / fan.current_speed * 100));
+            decimal percent = Math.Round((decimal) (range / fan.current_speed * 100));
             speedPercents.Add(percent);
         }
 
