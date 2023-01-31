@@ -12,7 +12,7 @@ public class fanSpeed
         {
             Console.WriteLine($"Fan is {fan.min_speed} {fan.current_speed} {fan.max_speed}");
             int range = fan.max_speed - fan.min_speed;
-            decimal percent = Math.Round((decimal) (range / fan.current_speed * 100));
+            decimal percent = Math.Round((decimal)(range * fan.current_speed / 100));
             speedPercents.Add(percent);
         }
 
@@ -39,7 +39,8 @@ public class fanSpeed
                     {
                         current_speed = int.Parse(File.ReadAllText($"{baseDir}/fan{fanNumber}_output")),
                         max_speed = int.Parse(File.ReadAllText($"{baseDir}/fan{fanNumber}_max")),
-                        min_speed = int.Parse(File.ReadAllText($"{baseDir}/fan{fanNumber}_min"))
+                        min_speed = int.Parse(File.ReadAllText($"{baseDir}/fan{fanNumber}_min")),
+                        number = int.Parse(fanNumber)
                     };
                     fans.Add(fan);
                     fanBlacklist.Add(fanNumber);
@@ -53,6 +54,7 @@ public class fanSpeed
         public int min_speed;
         public int max_speed;
         public int current_speed;
+        public int number;
     }
 
     public void setFanSpeed(int Percent)
