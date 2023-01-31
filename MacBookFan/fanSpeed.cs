@@ -1,14 +1,59 @@
+using System.Diagnostics;
+
 namespace MacBookFan;
 
 public class fanSpeed
 {
-    public int getFanSpeed()
+    public List<int> getFanSpeed()
     {
-        return 0;
+        var Fans = getFans();
+        List<int> speedPercents = new List<int>();
+        foreach (var fan in Fans)
+        {
+            int range = fan.max_speed - fan.min_speed;
+            int percent = (int)Math.Round((decimal) (range / fan.current_speed * 100));
+            speedPercents.Add(percent);
+        }
+
+        return speedPercents;
     }
 
-    public void setFanSpeed()
+    public List<Fan> getFans()
+    {
+        string baseDir = "/sys/devices/platform/applesmc.768/";
+        var Files = Directory.GetFiles(baseDir);
+        List<string> fanBlacklist = new List<string>();
+        List<Fan> fans = new List<Fan>();
+        foreach (var file in Files)
+        {
+            if (file.StartsWith("fan"))
+            {
+                string fanNumber = file[3].ToString();
+                if (!fanBlacklist.Contains(fanNumber))
+                {
+                    Fan fan = new Fan()
+                    {
+                        current_speed = int.Parse(File.ReadAllText($"{baseDir}/fan{fanNumber}_output")),
+                        max_speed = int.Parse(File.ReadAllText($"{baseDir}/fan{fanNumber}_max")),
+                        min_speed = int.Parse(File.ReadAllText($"{baseDir}/fan{fanNumber}_min"))
+                    };
+                    fanBlacklist.Add(fanNumber);
+                }
+            }
+        }
+        return fans;
+    }
+    public class Fan
+    {
+        public int min_speed;
+        public int max_speed;
+        public int current_speed;
+    }
+
+    public void setFanSpeed(int Percent)
     {
         //Set Fan Speed
+        //"/sys/devices/platform/applesmc.768"
+        
     }
 }

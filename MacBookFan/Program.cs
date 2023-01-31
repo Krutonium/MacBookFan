@@ -33,6 +33,12 @@ namespace MacBookFan // Note: actual namespace depends on the project name.
                 {
                     Console.WriteLine(i);
                 }
+
+                var fans = fanSpeed.getFanSpeed();
+                foreach (var fan in fans)
+                {
+                    Console.WriteLine($"Fan at {fan}");
+                }
                 Console.WriteLine("Looped");
                 loop = false;
             }
