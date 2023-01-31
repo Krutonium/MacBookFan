@@ -40,6 +40,7 @@ public class fanSpeed
                         max_speed = int.Parse(File.ReadAllText($"{baseDir}/fan{fanNumber}_max")),
                         min_speed = int.Parse(File.ReadAllText($"{baseDir}/fan{fanNumber}_min"))
                     };
+                    fans.Add(fan);
                     fanBlacklist.Add(fanNumber);
                 }
             }
