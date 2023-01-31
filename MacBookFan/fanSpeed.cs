@@ -27,9 +27,10 @@ public class fanSpeed
         foreach (var file in Files)
         {
             Console.WriteLine($"Considering {file}");
-            if (file.StartsWith("fan"))
+            string fi = Path.GetFileName(file);
+            if (fi.StartsWith("fan"))
             {
-                string fanNumber = file[3].ToString();
+                string fanNumber = fi[3].ToString();
                 if (!fanBlacklist.Contains(fanNumber))
                 {
                     Console.WriteLine($"Reading {file}");
