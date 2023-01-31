@@ -28,9 +28,11 @@ public class fanSpeed
         {
             if (file.StartsWith("fan"))
             {
+                Console.WriteLine($"Considering {file}");
                 string fanNumber = file[3].ToString();
                 if (!fanBlacklist.Contains(fanNumber))
                 {
+                    Console.WriteLine($"Reading {file}");
                     Fan fan = new Fan()
                     {
                         current_speed = int.Parse(File.ReadAllText($"{baseDir}/fan{fanNumber}_output")),
